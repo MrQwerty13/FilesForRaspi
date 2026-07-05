@@ -1,1 +1,1 @@
-alias tasks='cd TaskTrackerPyVersion && source .venv/bin/activate && python main.py'
+alias tasks='cd FilesForRaspi/TaskTrackerPyVersion && source .venv/bin/activate && python main.py'

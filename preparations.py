@@ -25,8 +25,12 @@ rc_file = Path.home() / (".zshrc" if "zsh" in shell else ".bashrc")
 
 ai_text = Path("ai.txt").read_text()
 tasks_text = Path("tasks.txt").read_text()
+temp_text = Path("temp.txt").read_text()
 
 with open(rc_file, "a") as f:
     f.write("\n# AI config\n")
     f.write(ai_text + "\n")
+    f.write("\n# Tasks config\n")
     f.write(tasks_text + "\n")
+    f.write("\n# Temp config\n")
+    f.write(temp_text + "\n")
