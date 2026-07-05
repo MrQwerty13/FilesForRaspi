@@ -1,0 +1,18 @@
+ai() {
+  local prompt
+  prompt=$(python3 -c 'import json,sys; print(json.dumps(" ".join(sys.argv[1:])))' "$@")
+
+  if [ -z "$prompt" ] || [ "$prompt" = '""' ]; then
+    echo "Usage: ai your prompt here"
+    return 1
+  fi
+
+  curl -s http://127.0.0.1:11434/api/generate \
+    -H "Content-Type: application/json" \
+    -d "{
+      \"model\": \"tinyllama\",
+      \"prompt\": $prompt,
+      \"stream\": false
+    }" \
+  | python3 -c 'import sys, json; print(json.loads(sys.stdin.read()).get("response",""))'
+}
